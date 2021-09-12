@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='fakehome.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header class="site-header clearfix">
+ <nav>
+  <div class="logo">
+  <h1>Detect It</h1>
+  </div>
+  <div class="menu"> 
+   <ul>
+    <li>Home</li>
+    <li>Services</li>
+    <li>About Us</li>
+    <li>Contact Us</li>
+   </ul>
+  </div>
+ </nav>
+ <section>
+  <div class="leftside"> 
+   <img src="{{ url_for('static', filename='news bg.png') }}">
+  </div>
+  <div class="rightside"> 
+   <h1>FAKE NEWS DETECTOR</h1>
+   <p>"Exploring how machine learning technologies could be leveraged to combat fake news."</p>
+   <div class="search-box">
+       <form action="{{url_for('predict')}}" method="POST">
+       <input class="search-txt"type="text"name="message"required="required"placeholder="Type to check...">
+       <a class="search-btn"href="#">
+       <i class="fa fa-search" aria-hidden="true"></i></a>
+
+   <button type="submit">predict</button>
+      <div>
+          {% if prediction == [1]%}
+          <h2>"Alert! ! ! It's fake"</h2>
+          {% elif prediction == [0]%}
+          <h2>"Wohoo! ! ! It's real"</h2>
+          {% endif %}
+      </div>
+      </form>
+
+  </div>
+  </div>
+ </section>
+</header>
+<footer>
+    <div class="footer-content">
+        <h3>Crown Monkey</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo iste corrupti doloribus odio sed!</p>
+        <ul class="socials">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2021 crown monkey. designed by <span>yo yo</span></p>
+    </div>
+</footer>
+</body>
+</html>
